@@ -1,7 +1,7 @@
 <h1>KeyKombo</h1>
 
 <h4>Wireframe</h4>
-![Wireframe](screenshots/wireframe1.png)
+![Wireframe](wireframes/wireframe1.png)
 
 
 <h4>Technologies Used:</h4>
