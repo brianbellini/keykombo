@@ -1,6 +1,7 @@
 <h1>KeyKombo</h1>
 
 <h4>Wireframe</h4>
+
 ![Wireframe](wireframes/wireframe1.png)
 
 
