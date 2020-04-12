@@ -1,27 +1,24 @@
 import React from 'react';
-import logo from '../../logo.svg';
+import {Route} from 'react-router-dom';
+// import logo from '../../logo.svg';
 import './App.css';
 import Nav from '../../components/Nav/Nav'
+import SignupPage from '../SignupPage/SignupPage';
+import LoginPage from '../LoginPage/LoginPage';
+
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.jsx</code> and save to reload.
-        </p>
-        <h1>KeyKombo</h1>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
       <Nav />
+      <Route exact path='/signup' render={({ history }) => 
+            <SignupPage
+              history={history} />
+      }/>
+      <Route exact path='/login' render={() => 
+        <LoginPage />
+      }/>
+          
     </div>
   );
 }

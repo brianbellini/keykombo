@@ -1,11 +1,15 @@
-import React, {Component} from 'react';
-import Link from '../Link/Link'
+import React from 'react';
+import {Link} from 'react-router-dom';
+import './Nav.css';
 
-export default function Nav(props) {
-    return (
-        <>
-            <h4>NAV</h4>
-            <Link />
-        </>
-    )
-}
+const Nav = () => {
+  return (
+    <div className='NavBar'>
+      <Link to="/login" className='NavBar-link'>LOG IN</Link>
+      &nbsp;&nbsp;|&nbsp;&nbsp;
+      <Link to="/signup" className='NavBar-link'>SIGN UP</Link>
+    </div>
+  );
+};
+
+export default Nav;
