@@ -1,9 +1,11 @@
-import React from './node_modules/react';
-import { Link } from 'react-router-dom';
+import React, {Component} from 'react';
+import Link from '../Link/Link'
 
-default export Nav(props) {
+export default function Nav(props) {
     return (
-        <h4>NAV</h4>
-        <Link />
+        <>
+            <h4>NAV</h4>
+            <Link />
+        </>
     )
 }

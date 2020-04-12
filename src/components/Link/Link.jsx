@@ -1,6 +1,6 @@
-import React from './node_modules/react';
+import React, {Component} from 'react';
 
-default export Link(props) {
+export default function Link(){
     return (
         <h4>LINK</h4>
     )
