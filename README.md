@@ -1,7 +1,7 @@
 <h1>KeyKombo</h1>
 
 <h4>Wireframe</h4>
-![Wireframe](wireframes/wireframe1.png)
+![Wireframe](public/doc_images/wireframe1.png)
 
 
 <h4>Technologies Used:</h4>
@@ -21,6 +21,6 @@
 
 [KeyKombo](https://#/)
 	
-[Trello Board - Planning](https://trello.com/b/X3A42o3a/keykombo)
+[Trello Board](https://trello.com/b/X3A42o3a/keykombo)
 
 
