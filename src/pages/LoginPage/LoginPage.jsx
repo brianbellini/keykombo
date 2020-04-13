@@ -11,7 +11,9 @@ class LoginPage extends Component {
   };
 
   handleChange = (e) => {
-    // TODO: implement in an elegant way
+    this.setState({
+        [e.target.name]: e.target.value
+    });
   }
 
   handleSubmit = async (e) => {

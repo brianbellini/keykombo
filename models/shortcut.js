@@ -12,6 +12,8 @@ const shortcutSchema = new Schema({
     },
     menu: {
         type: String,
+        default: "Other",
+        required: true,
     },
     application: {
         type: String,
