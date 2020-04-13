@@ -12,7 +12,7 @@ async function signup(req, res) {
   try {
     await user.save();
     const token = createJWT(user);
-    res.json(user);
+    res.json({token});
   } catch (err) {
     res.status(400).json(err);
   }
@@ -38,8 +38,8 @@ async function login(req, res) {
 /*----- Helper Functions -----*/
 function createJWT(user) {
     return jwt.sign(
-      {user}, // data payload
-      SECRET,
-      {expiresIn: '24h'}
+        {user},
+        SECRET,
+        {expiresIn: '24h'}
     );
 }
