@@ -2,7 +2,15 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const shortcutSchema = new Schema({
+    application: {
+        type: String,
+        required: true,
+    },
     function: {
+        type: String,
+        required: true,
+    },
+    description: {
         type: String,
         required: true,
     },
@@ -13,10 +21,6 @@ const shortcutSchema = new Schema({
     menu: {
         type: String,
         default: "Other",
-        required: true,
-    },
-    application: {
-        type: String,
         required: true,
     },
     creator: {

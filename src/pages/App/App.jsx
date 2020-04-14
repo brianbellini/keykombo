@@ -5,13 +5,15 @@ import Nav from '../../components/Nav/Nav'
 import SignupPage from '../SignupPage/SignupPage';
 import LoginPage from '../LoginPage/LoginPage';
 import userService from '../../utils/userService';
+import shortcutService from '../../utils/shortcutService';
+import ShortcutAddPage from '../ShortcutAddPage/ShortcutAddPage';
 
 
 class App extends Component {
     constructor() {
         super();
         this.state = {
-          user: userService.getUser(), //GETTING NULL ALL THE TIME
+          user: userService.getUser(),
         };
     }
 
@@ -22,6 +24,18 @@ class App extends Component {
     handleLogout = () => {
       userService.logout();
       this.setState({user: null});
+    }
+
+    handleAddShortcut = async newShortcutData => {
+        await shortcutService.create(newShortcutData);
+        this.getAllShortcuts();
+    }
+
+    getAllShortcuts = async () => {
+      const shortcuts = await shortcutService.getAll();
+      this.setState({
+        shortcuts
+      })
     }
 
     render() {
@@ -39,7 +53,9 @@ class App extends Component {
                       history={history}
                       handleSignupOrLogin={this.handleSignupOrLogin}/>
                 }/>
-                  
+                <Route exact path='/add' render={() =>
+              <ShortcutAddPage handleAddShortcut={this.handleAddShortcut} />
+                }/>
             </div>
         );
     }
