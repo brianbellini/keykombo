@@ -15,12 +15,9 @@
     CSS
     Heroku
 
+<h4>Getting Started:</h4>
 
-
-
-<h4>Planning:</h4>
-
-[KeyKombo](https://#/)
+[KeyKombo](https://keykombo.herokuapp.com)
 	
 [Trello Board](https://trello.com/b/X3A42o3a/keykombo)
 
