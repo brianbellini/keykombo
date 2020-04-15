@@ -1,9 +1,8 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import React, {Component} from 'react';
 import userService from '../../utils/userService'
-import './LoginPage.css';
+import './LoginCard.css';
 
-class LoginPage extends Component {
+class LoginCard extends Component {
   
   state = {
     email: '',
@@ -22,7 +21,6 @@ class LoginPage extends Component {
       await userService.login(this.state);
       this.props.handleSignupOrLogin();
       // signed up
-      this.props.history.push('/');
     } catch (err) {
       // invalid user data
       alert('Invalid Credentials!');
@@ -31,7 +29,7 @@ class LoginPage extends Component {
 
   render() {
     return (
-      <div className="LoginPage">
+      <div className="LoginCard">
         <header className="header-footer">Log In</header>
         <form className="form-horizontal" onSubmit={this.handleSubmit} >
           <div className="form-group">
@@ -46,8 +44,7 @@ class LoginPage extends Component {
           </div>
           <div className="form-group">
             <div className="col-sm-12 text-center">
-              <button className="btn btn-default">Log In</button>&nbsp;&nbsp;&nbsp;
-              <Link to='/'>Cancel</Link>
+              <button className="btn btn-default">Log In</button>
             </div>
           </div>
         </form>
@@ -56,4 +53,4 @@ class LoginPage extends Component {
   }
 }
 
-export default LoginPage;
+export default LoginCard;

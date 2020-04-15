@@ -1,12 +1,19 @@
 import React, {Component} from 'react';
 import {Route} from 'react-router-dom';
 import './App.css';
+
+/* ----------------COMPONENTS------------------ */
 import Nav from '../../components/Nav/Nav'
-import SignupPage from '../SignupPage/SignupPage';
-import LoginPage from '../LoginPage/LoginPage';
+import SignupCard from '../../components/Signup/Signup';
+import LoginCard from '../../components/LoginCard/LoginCard';
+import ShortcutList from '../../components/ShortcutList/ShortcutList';
+
+/* ------------------PAGES------------------ */
+import ShortcutAddPage from '../ShortcutAddPage/ShortcutAddPage';
+
+/* ------------------SERVICES------------------ */
 import userService from '../../utils/userService';
 import shortcutService from '../../utils/shortcutService';
-import ShortcutAddPage from '../ShortcutAddPage/ShortcutAddPage';
 
 
 class App extends Component {
@@ -14,6 +21,7 @@ class App extends Component {
         super();
         this.state = {
           user: userService.getUser(),
+          shortcuts: [],
         };
     }
 
@@ -31,30 +39,39 @@ class App extends Component {
         this.getAllShortcuts();
     }
 
-    getAllShortcuts = async () => {
+    // getAllShortcuts = async () => {
+    //   const shortcuts = await shortcutService.getAll();
+    //   console.log("GETALLSHORTCUTS: ", shortcuts)
+    //   return(shortcuts);
+    // }
+
+  //   async componentDidMount() {
+  //     const group = await fetchGroup(this.props.match.params.id);
+  //     this.setState({
+  //         group: group
+  //     })
+  // }
+
+    async componentDidMount() {
       const shortcuts = await shortcutService.getAll();
-      this.setState({
-        shortcuts
-      })
+      this.setState({shortcuts: shortcuts})
     }
 
+
     render() {
+      console.log("STATE.SHORTCUTS: ", this.state.shortcuts)
+      console.log(this.state.user)
         return (
             <div className="App">
                 <Nav user={this.state.user} handleLogout={this.handleLogout}/>
-                <Route exact path='/signup' render={({history}) => 
-                    <SignupPage
-                      history={history}
-                      handleSignupOrLogin={this.handleSignupOrLogin}
-                    />
-                }/>
-                <Route exact path='/login' render={({history}) => 
-                    <LoginPage 
-                      history={history}
-                      handleSignupOrLogin={this.handleSignupOrLogin}/>
-                }/>
+                <ShortcutList 
+                    shortcuts={this.state.shortcuts}/>
+                <LoginCard
+                    handleSignupOrLogin={this.handleSignupOrLogin} />
+                <SignupCard
+                    handleSignupOrLogin={this.handleSignupOrLogin} />
                 <Route exact path='/add' render={() =>
-              <ShortcutAddPage handleAddShortcut={this.handleAddShortcut} />
+              <ShortcutAddPage handleAddShortcut={this.handleAddShortcut} userID={this.state.user._id}/>
                 }/>
             </div>
         );

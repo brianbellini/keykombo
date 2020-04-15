@@ -6,7 +6,7 @@ const shortcutSchema = new Schema({
         type: String,
         required: true,
     },
-    function: {
+    func: {
         type: String,
         required: true,
     },

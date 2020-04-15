@@ -1,7 +1,8 @@
-.LoginPage {
+.SignupCard {
     display: flex;
     flex-flow: column nowrap;
     justify-content: center;
     align-items: center;
     margin-bottom: 50px;
+    border: 1px black;
   }

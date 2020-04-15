@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import UserService from '../../utils/userService';
 
 class ShortcutAddPage extends Component {
   state = {
@@ -79,6 +80,7 @@ class ShortcutAddPage extends Component {
             ADD SHORTCUT
           </button>
         </form>
+        <h4>{}</h4>
       </>
     );
   }

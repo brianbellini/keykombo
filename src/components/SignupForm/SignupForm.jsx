@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
+import './SignupForm.css'
 import userService from '../../utils/userService';
 
 class SignupForm extends Component {
@@ -24,7 +25,6 @@ class SignupForm extends Component {
       await userService.signup(this.state);
       this.props.handleSignupOrLogin();
       // signed up
-      this.props.history.push('/');
     } catch (err) {
       // invalid user data
       this.props.updateMessage(err.message);
@@ -37,7 +37,7 @@ class SignupForm extends Component {
 
   render() {
     return (
-      <div>
+      <div className="signup-form">
         <header className="header-footer">Sign Up</header>
         <form className="form-horizontal" onSubmit={this.handleSubmit} >
           <div className="form-group">
