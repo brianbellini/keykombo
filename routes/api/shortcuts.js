@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const shortcutsCtrl = require('../../controllers/shortcuts');
 
-router.get('/', checkAuth, shortcutsCtrl.indexAll);
+router.get('/', shortcutsCtrl.indexAll);
 router.get('/:id', checkAuth, shortcutsCtrl.show);
 router.post('/', checkAuth, shortcutsCtrl.create);
 router.put('/:id', checkAuth, shortcutsCtrl.update);

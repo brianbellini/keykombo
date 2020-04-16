@@ -1,4 +1,5 @@
-const Shortcut = require('../models/shortcut');
+const User = require('../models/user');
+const Shortcut = 
 
 module.exports = {
     index,
@@ -11,7 +12,7 @@ module.exports = {
 
 async function index(req, res) {
     try{
-        const shortcuts = await Shortcut.find({});
+        const shortcuts = await Shortcut.find({user: req.user._id}).populate('user');
         res.status(200).json(shortcuts);
     }
     catch(err){

@@ -8,13 +8,17 @@ function ShortcutListPage(props) {
     <>
       <h1>Shortcut List</h1>
       <div className='ShortcutListPage-grid'>
-        {props.shortcuts.map(shortcut =>
-            <ShortcutCell
-                key={shortcut._id}
-                shortcut={shortcut}
-                // handleDeleteShortcut={props.handleDeleteshortcut}
-            />
-        )}
+            <table>
+                <tbody>
+                    {props.shortcuts.map(shortcut =>
+                        <ShortcutCell
+                            key={shortcut._id}
+                            shortcut={shortcut}
+                            user={props.user}
+                        />
+                    )}
+                </tbody>
+            </table>
       </div>
     </>
   );

@@ -9,6 +9,7 @@ require('dotenv').config();
 // Routes ------------------------------------------------
 const usersRoutes = require('./routes/api/users');
 const shortcutsRoutes = require('./routes/api/shortcuts');
+const myShortcutsRoutes = require('./routes/api/myshortcuts');
 
 require('./config/database');
 
@@ -24,6 +25,7 @@ app.use(express.static(path.join(__dirname, 'build')));
 app.use('/api/users', usersRoutes);
 app.use(require('./config/auth'));
 app.use('/api/shortcuts', shortcutsRoutes);
+app.use('/api/myShortcuts', myShortcutsRoutes);
 
 app.get('/*', function(req, res) {
     res.sendFile(path.join(__dirname, 'build', 'index.html'));

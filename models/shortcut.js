@@ -23,11 +23,7 @@ const shortcutSchema = new Schema({
         default: "Other",
         required: true,
     },
-    creator: {
-        type: Schema.Types.ObjectId,
-        ref: 'User'
-    }
-    }, {
+ }, {
     timestamps: true
 });
 

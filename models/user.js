@@ -4,6 +4,32 @@ const bcrypt = require('bcrypt');
 
 const SALT_ROUNDS = 6;
 
+const myListSchema = new Schema({
+    application: {
+        type: String,
+        required: true,
+    },
+    func: {
+        type: String,
+        required: true,
+    },
+    description: {
+        type: String,
+        required: true,
+    },
+    combo: {
+        type: String,
+        required: true,
+    },
+    menu: {
+        type: String,
+        default: "Other",
+        required: true,
+    },
+} , {
+    timestamps: true
+});
+
 const userSchema = new Schema({
     name: {
         type: String,
@@ -18,7 +44,8 @@ const userSchema = new Schema({
         required: true,
         unique: true,
         lowercase: true
-    }
+    },
+    myList: [myListSchema]
     }, {
     timestamps: true
 });

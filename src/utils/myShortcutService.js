@@ -1,14 +1,14 @@
 // import userService from './userService';
 import tokenService from './tokenService';
 
-const BASE_URL = '/api/shortcuts';
+const BASE_URL = '/api/myShortcuts';
 
 function getAll() {
   return fetch(BASE_URL, {
       method: 'GET',
-      // headers: {
-      //   'Authorization': `Bearer ${tokenService.getToken()}`
-      // }
+      headers: {
+        'Authorization': `Bearer ${tokenService.getToken()}`
+      }
   })
   .then(res => res.json());
 }

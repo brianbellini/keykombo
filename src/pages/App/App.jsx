@@ -7,6 +7,9 @@ import Nav from '../../components/Nav/Nav'
 import SignupCard from '../../components/Signup/Signup';
 import LoginCard from '../../components/LoginCard/LoginCard';
 import ShortcutList from '../../components/ShortcutList/ShortcutList';
+import MyShortcuts from '../../components/MyShortcuts/MyShortcuts';
+import MasterShortcuts from '../../components/MasterShortcuts/MasterShortcuts';
+import AppFilter from '../../components/AppFilter/AppFilter';
 
 /* ------------------PAGES------------------ */
 import ShortcutAddPage from '../ShortcutAddPage/ShortcutAddPage';
@@ -14,6 +17,7 @@ import ShortcutAddPage from '../ShortcutAddPage/ShortcutAddPage';
 /* ------------------SERVICES------------------ */
 import userService from '../../utils/userService';
 import shortcutService from '../../utils/shortcutService';
+import myShortcutService from '../../utils/myShortcutService';
 
 
 class App extends Component {
@@ -21,6 +25,7 @@ class App extends Component {
         super();
         this.state = {
           user: userService.getUser(),
+          myList: false,
           shortcuts: [],
         };
     }
@@ -35,37 +40,36 @@ class App extends Component {
     }
 
     handleAddShortcut = async newShortcutData => {
-        await shortcutService.create(newShortcutData);
+        await myShortcutService.create(newShortcutData);
         this.getAllShortcuts();
     }
 
-    // getAllShortcuts = async () => {
-    //   const shortcuts = await shortcutService.getAll();
-    //   console.log("GETALLSHORTCUTS: ", shortcuts)
-    //   return(shortcuts);
-    // }
-
-  //   async componentDidMount() {
-  //     const group = await fetchGroup(this.props.match.params.id);
-  //     this.setState({
-  //         group: group
-  //     })
-  // }
+    handleListSelector = (clicked) => {
+      (clicked === true) ? this.setState({myList: true}) : this.setState({myList: false})
+    }
 
     async componentDidMount() {
-      const shortcuts = await shortcutService.getAll();
-      this.setState({shortcuts: shortcuts})
+      if (this.state.myShortcuts) {
+        const shortcuts = await myShortcutService.getAll();
+        this.setState({shortcuts: shortcuts})
+      } else {
+        const shortcuts = await shortcutService.getAll();
+        this.setState({shortcuts: shortcuts})
+      }
     }
 
 
     render() {
-      console.log("STATE.SHORTCUTS: ", this.state.shortcuts)
-      console.log(this.state.user)
+      console.log('USER: ', this.state.user)
         return (
             <div className="App">
                 <Nav user={this.state.user} handleLogout={this.handleLogout}/>
+                <AppFilter applications={this.state.shortcuts}/>
+                <MasterShortcuts handleListSelector={this.handleListSelector}/>
+                <MyShortcuts handleListSelector={this.handleListSelector}/>
                 <ShortcutList 
                     shortcuts={this.state.shortcuts}/>
+                    {/* // user={this.state.user._id}/> */}
                 <LoginCard
                     handleSignupOrLogin={this.handleSignupOrLogin} />
                 <SignupCard
