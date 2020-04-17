@@ -1,6 +1,5 @@
 import React from 'react';
 import './ShortcutCell.css'
-import { PromiseProvider } from 'mongoose';
 
 function ShortcutCell({shortcut, handleAddToMyList, showEdit, handleSelectShortcut}) {
     // onClick={() => handleSelectShortcut(shortcut._id)}
