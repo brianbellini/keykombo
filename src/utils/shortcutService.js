@@ -6,9 +6,9 @@ const BASE_URL = '/api/shortcuts';
 function getAll() {
   return fetch(BASE_URL, {
       method: 'GET',
-      // headers: {
-      //   'Authorization': `Bearer ${tokenService.getToken()}`
-      // }
+      headers: {
+        'Authorization': `Bearer ${tokenService.getToken()}`
+      }
   })
   .then(res => res.json());
 }

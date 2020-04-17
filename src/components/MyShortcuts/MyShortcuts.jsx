@@ -1,7 +1,7 @@
-import React, {Component} from 'react';
+import React from 'react';
 
 export default function MyShortcuts(props) {
     return (
-        <button onClick={() => props.handleListSelector(true)}>My Shortcuts</button>
+        <button onClick={() => props.handleMySelector()}>My Shortcuts</button>
     )
 }

@@ -2,9 +2,16 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 
 class ShortcutEditPage extends Component {
+  
   state = {
     invalidForm: false,
-    formData: this.props.location.state.shortcut
+    formData: {
+      application: '',
+      func: '',
+      description: '',
+      combo: '',
+      menu: '',
+    }
   };
 
   formRef = React.createRef();
@@ -24,6 +31,14 @@ class ShortcutEditPage extends Component {
     });
   };
 
+  componentDidMount() {
+    console.log("EDIT PROPS: ", {...this.props.selectedShortcut})
+
+    this.setState({
+      formData: {...this.props.selectedShortcut}
+    })
+  }
+
   render() {
     return (
       <>
@@ -40,8 +55,8 @@ class ShortcutEditPage extends Component {
           </div>
             <label>Function</label>
             <input
-              name="function"
-              value={this.state.formData.function}
+              name="func"
+              value={this.state.formData.func}
               onChange={this.handleChange}
               required/>
           </div>
@@ -83,4 +98,4 @@ class ShortcutEditPage extends Component {
   }
 }
 
-export default EditPuppyPage;
+export default ShortcutEditPage;

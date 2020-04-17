@@ -1,7 +1,10 @@
-import React, {Component} from 'react';
+import React from 'react';
 
 export default function MasterShortcuts(props) {
     return (
-        <button onClick={() => props.handleListSelector(false)}>All Shortcuts</button>
+        <div>
+            <button onClick={() => props.handleAllSelector()}>All Shortcuts</button>
+            <button onClick={() => props.handleMySelector()}>My Shortcuts</button>
+        </div>
     )
 }

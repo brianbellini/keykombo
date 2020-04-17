@@ -3,7 +3,6 @@ import './ShortcutList.css'
 import ShortcutCell from '../../components/ShortcutCell/ShortcutCell';
 
 function ShortcutListPage(props) {
-    console.log("PROPS.SHORTCUTS: ", props.shortcuts)
   return (
     <>
       <h1>Shortcut List</h1>
@@ -15,6 +14,10 @@ function ShortcutListPage(props) {
                             key={shortcut._id}
                             shortcut={shortcut}
                             user={props.user}
+                            showDelete={props.showDelete}
+                            handleDeleteShortcut={props.handleDeleteShortcut}
+                            handleAddToMyList={props.handleAddToMyList}
+                            handleSelectShortcut={props.handleSelectShortcut}
                         />
                     )}
                 </tbody>

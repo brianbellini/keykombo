@@ -23,7 +23,6 @@ async function create(req, res) {
     req.body.user = req.user._id;
     try{
         const shortcut = await Shortcut.create(req.body);
-        console.log('new shortcut:', shortcut)
         res.status(201).json(shortcut);
     }
     catch(err){

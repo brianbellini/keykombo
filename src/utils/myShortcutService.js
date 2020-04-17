@@ -1,19 +1,19 @@
 // import userService from './userService';
 import tokenService from './tokenService';
 
-const BASE_URL = '/api/myShortcuts';
+const BASE_URL = '/api/myshortcuts';
 
-function getAll() {
-  return fetch(BASE_URL, {
-      method: 'GET',
-      headers: {
-        'Authorization': `Bearer ${tokenService.getToken()}`
-      }
-  })
-  .then(res => res.json());
-}
+// function getAll() {
+//   return fetch(BASE_URL, {
+//       method: 'GET',
+//       headers: {
+//         'Authorization': `Bearer ${tokenService.getToken()}`
+//       }
+//   })
+//   .then(res => res.json());
+// }
 
-export function create(shortcut) {
+function create(shortcut) {
     return fetch(BASE_URL, {
         method: 'POST',
         headers: {
@@ -24,7 +24,18 @@ export function create(shortcut) {
     }).then(res => res.json());
 }
 
+function deleteOne(id) {
+  console.log("THIS IS ID", id)
+  return fetch(`${BASE_URL}/${id}`, {
+      method: 'DELETE',
+      headers: {
+          'Authorization': `Bearer ${tokenService.getToken()}`
+      }
+  }).then(res => res.json());
+}
+
 export default {
-    getAll,
+    // getAll,
     create,
+    deleteOne,
 }

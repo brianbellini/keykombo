@@ -1,12 +1,11 @@
 import React, {Component} from 'react';
-import UserService from '../../utils/userService';
 
 class ShortcutAddPage extends Component {
   state = {
     invalidForm: true,
     formData: {
       application: '',
-      function: '',
+      func: '',
       description: '',
       combo: '',
       menu: '',
@@ -44,8 +43,8 @@ class ShortcutAddPage extends Component {
           </div>
             <label>Function</label>
             <input
-              name="function"
-              value={this.state.formData.function}
+              name="func"
+              value={this.state.formData.func}
               onChange={this.handleChange}
               required/>
           </div>
