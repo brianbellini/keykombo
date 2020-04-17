@@ -5,13 +5,7 @@ class ShortcutEditPage extends Component {
   
   state = {
     invalidForm: false,
-    formData: {
-      application: '',
-      func: '',
-      description: '',
-      combo: '',
-      menu: '',
-    }
+    formData: {...this.props.getSelectedShortcut()},
   };
 
   formRef = React.createRef();
@@ -20,6 +14,13 @@ class ShortcutEditPage extends Component {
     e.preventDefault();
     this.props.handleUpdateShortcut(this.state.formData);
   };
+
+  componentWillReceiveProps(nextProps) {
+    // You don't have to do this check first, but it can help prevent an unneeded render
+    if (nextProps.selectedShortcut !== this.state.formData) {
+      this.setState({ formData: nextProps.selectedShortcut });
+    }
+  }
 
   handleChange = e => {
     this.setState({
@@ -32,14 +33,13 @@ class ShortcutEditPage extends Component {
   };
 
   componentDidMount() {
-    console.log("EDIT PROPS: ", {...this.props.selectedShortcut})
-
     this.setState({
       formData: {...this.props.selectedShortcut}
     })
   }
 
   render() {
+    console.log(this.props)
     return (
       <>
         <h1>Edit Shortcut</h1>
@@ -91,8 +91,11 @@ class ShortcutEditPage extends Component {
           >
             SAVE CHANGES
           </button>&nbsp;&nbsp;
-          <Link to='/'>CANCEL</Link>
         </form>
+        <button
+          onClick={() => this.props.handleDeleteShortcut(this.props.selectedShortcut._id)}>
+          X
+        </button>
       </>
     );
   }

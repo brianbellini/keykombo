@@ -14,8 +14,7 @@ function ShortcutListPage(props) {
                             key={shortcut._id}
                             shortcut={shortcut}
                             user={props.user}
-                            showDelete={props.showDelete}
-                            handleDeleteShortcut={props.handleDeleteShortcut}
+                            showEdit={props.showEdit}
                             handleAddToMyList={props.handleAddToMyList}
                             handleSelectShortcut={props.handleSelectShortcut}
                         />

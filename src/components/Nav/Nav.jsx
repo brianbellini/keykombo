@@ -10,11 +10,7 @@ const Nav = (props) => {
             <span>WELCOME, {props.user.name}</span>
         </div>
         :
-        <div className='NavBar'>
-            <Link to="/login">LOG IN</Link>
-            &nbsp;&nbsp;|&nbsp;&nbsp;
-            <Link to="/signup">SIGN UP</Link>
-        </div>;
+        "";
 
     return (
         <div>

@@ -25,7 +25,7 @@ class App extends Component {
         super();
         this.state = {
           user: userService.getUser(),
-          myList: userService.getUser().myList,
+          myList:  userService.getUser().myList || [],
           showMyList: false,
           shortcuts: [],
           appList: ['Applications'],
@@ -35,29 +35,46 @@ class App extends Component {
 
     handleSignupOrLogin = () => {
       this.setState({user: userService.getUser(),
-                    myList: userService.getUser().myList
+                    myList: userService.getUser().myList,
+                    appList: this.getAppList(this.state.shortcuts)
                   });
     }
 
     handleLogout = () => {
       userService.logout();
       this.setState({user: null,
-                    myList: []});
+                    myList: [],
+                  appList: ['Applications']});
     }
 
     handleAddShortcut = async newShortcutData => {
         await myShortcutService.create(newShortcutData);
-        this.setState({myList: this.state.user.myList});  //TRIED THIS
+        const user = userService.getUser()
+      this.setState(state => ({
+        user: user,
+        myList: user.myList}))
+    }
+
+    handleAddToMyList = async shortcut => {
+      console.log("ADD THIS ID: ", shortcut)
+      delete shortcut._id
+      await myShortcutService.create(shortcut)
+      const user = userService.getUser()
+      this.setState(state => ({
+        user: user,
+        myList: user.myList}))
     }
 
     handleMySelector = () => {
       if (this.state.user) {
-        this.setState({showMyList: true})
+        this.setState({showMyList: true,
+                      appList: this.getAppList(this.state.myList)})
       }
     };
 
     handleAllSelector = () => {
-        this.setState({showMyList: false})
+        this.setState({showMyList: false,
+                      appList: this.getAppList(this.state.shortcuts)})
     };
 
     getAppList(shortcuts) {
@@ -72,19 +89,32 @@ class App extends Component {
 
     handleDeleteShortcut = async id => {
       await myShortcutService.deleteOne(id);
+      const user = userService.getUser()
       this.setState(state => ({
-        myList: this.state.user.myList}))
+        user: user,
+        myList: user.myList}))
     }
 
     handleUpdateShortcut = async id => {
-      await myShortcutService.update(id);
-      this.setState(state => ({
+      // await myShortcutService.update(id);
+      // this.setState(state => ({
+      //   selectedShortcut: null,
+      // }))
+    }
+
+    getSelectedShortcut = () => {
+      return this.state.selectedShortcut
+    }
+
+    resetSelectShortcut = () => {
+      this.setState({
         selectedShortcut: null,
-        
-      }))
+      })
     }
 
     handleSelectShortcut = (selectedShortcut) => {
+      this.resetSelectShortcut()
+
       this.setState({
         selectedShortcut
       })
@@ -107,22 +137,36 @@ class App extends Component {
                 <MasterShortcuts
                   handleAllSelector={this.handleAllSelector}
                   handleMySelector={this.handleMySelector}/>
-                <Nav user={this.state.user} handleLogout={this.handleLogout}/>
                 <ShortcutList
                     shortcuts={this.state.showMyList ? this.state.myList : this.state.shortcuts}
-                    showDelete={this.state.showMyList ? true : false}
+                    showEdit={this.state.showMyList ? true : false}
                     handleDeleteShortcut={this.handleDeleteShortcut}
-                    handleSelectShortcut={this.handleSelectShortcut}/>
-
+                    handleSelectShortcut={this.handleSelectShortcut}
+                    handleAddToMyList={this.handleAddToMyList}/>
+                  
+                <div>
+                <Nav user={this.state.user} handleLogout={this.handleLogout}/>
+                {(!this.state.user) ?
                 <LoginCard
                     handleSignupOrLogin={this.handleSignupOrLogin} />
+                    :
+                    ""}
+                </div>
+                {(!this.state.user) ?
                 <SignupCard
                     handleSignupOrLogin={this.handleSignupOrLogin} />
+                    :
+                    ""}
+
                 {(this.state.user && this.state.showMyList) ?
                 <ShortcutAddPage handleAddShortcut={this.handleAddShortcut} userID={this.state.user._id}/> :
                 ""}
                 {(this.state.showMyList && this.state.selectedShortcut) ?
-                <ShortcutEditPage selectedShortcut={this.state.selectedShortcut} />
+                <ShortcutEditPage
+                    selectedShortcut={this.state.selectedShortcut}
+                    handleUpdateShortcut={this.handleUpdateShortcut}
+                    handleDeleteShortcut={this.handleDeleteShortcut}
+                    getSelectedShortcut={this.getSelectedShortcut}/>
                 :
                 ""}
               

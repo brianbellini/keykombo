@@ -21,7 +21,9 @@ function create(shortcut) {
           'Authorization': `Bearer ${tokenService.getToken()}`
         },
         body: JSON.stringify(shortcut)
-    }).then(res => res.json());
+    }).then(res => res.json()).then(({token}) => {
+      tokenService.setToken(token);
+    });
 }
 
 function deleteOne(id) {
@@ -31,7 +33,10 @@ function deleteOne(id) {
       headers: {
           'Authorization': `Bearer ${tokenService.getToken()}`
       }
-  }).then(res => res.json());
+  }).then(res => res.json()).then(({token}) => {
+    tokenService.setToken(token);
+  });
+
 }
 
 export default {
