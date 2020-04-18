@@ -8,7 +8,6 @@ class AppFilter extends Component {
     };
 
     render() {
-        console.log(this.props.AppFilter)
         return (
                 <div>
                 <select name="application" value='Applications' onChange={this.handleChange}>

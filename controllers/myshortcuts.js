@@ -5,7 +5,7 @@ const SECRET = process.env.SECRET
 
 module.exports = {
     create,
-    update,
+    update: updateShortcut,
     delete: deleteOne,
 }
 
@@ -25,11 +25,11 @@ async function create(req, res) {
     }
 }
 
-async function update(req, res) {
+async function updateShortcut(req, res) {
     try{
         const user = await User.findById(req.user._id);
         const token =  createJWT(user)
-        const updatedShortcut = await user.myList.findByIdAndUpdate(req.params.id, req.body, {new: true});
+        await user.myList.findByIdAndUpdate(req.params.id, req.body, {new: true});
         res.status(200).json({token});
     }
     catch(err){

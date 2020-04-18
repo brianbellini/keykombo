@@ -3,15 +3,20 @@ require('dotenv').config();
 require('../config/database');
 const Shortcut = require('../models/shortcut');
 const macos = require('./Applications/macos');
+const vscode = require('./Applications/vscode');
 
 // clear out all recipes
-const p1 = Shortcut.deleteMany({});
+const deleteAll = Shortcut.deleteMany({});
 
-Promise.all([Shortcut.create(macos.shortcuts)])
+Promise.all([deleteAll])
 
 .then(function() {
-  // return Shortcut.create(macos.shortcts);
+  return Shortcut.create(macos.shortcts);
 })
+.then(function() {
+  return Shortcut.create(vscode.shortcts);
+})
+
 
 .then(function() {
   process.exit();
