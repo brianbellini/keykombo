@@ -4,7 +4,7 @@ import ShortcutCell from '../../components/ShortcutCell/ShortcutCell';
 
 function filterListBy(list, filter) {
   let result = []
-  if (filter === "Applications") {
+  if (filter === "--Show All--") {
     return list;
   } else {
     list.forEach((item) => {

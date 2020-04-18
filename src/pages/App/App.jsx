@@ -31,7 +31,7 @@ class App extends Component {
           shortcuts: [],
           appList: ['Applications'],
           selectedShortcut: null,
-          appFilter: "Applications",
+          appFilter: "Show All",
         };
     }
 
@@ -54,17 +54,20 @@ class App extends Component {
     handleMySelector = () => {
       if (this.state.user) {
         this.setState({showMyList: true,
+                      appFilter: "--Show All--",
                       appList: this.getAppList(this.state.myList)})
       }
     };
 
     handleAllSelector = () => {
         this.setState({showMyList: false,
+                      appFilter: "--Show All--",
                       appList: this.getAppList(this.state.shortcuts)})
+                      
     };
 
     getAppList(shortcuts) {
-      let appList = [];
+      let appList = ['Applications', '--Show All--'];
       shortcuts.forEach((shortcut) => {
         if (!appList.includes(shortcut.application)) {
           appList.push(shortcut.application)
@@ -139,7 +142,7 @@ class App extends Component {
 
         this.setState({
           shortcuts: shortcuts,
-   
+          appFilter: "--Show All--",
           appList: this.getAppList(shortcuts),
         });
       }
@@ -150,6 +153,7 @@ class App extends Component {
             <div className="App">
                 <AppFilter
                     applications={this.state.appList}
+                    appFilter={this.state.AppFilter}
                     handleFilter={this.handleFilter}/>
 
                 <MasterShortcuts

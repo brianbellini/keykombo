@@ -7,7 +7,7 @@ const macos = require('./Applications/macos');
 // clear out all recipes
 const p1 = Shortcut.deleteMany({});
 
-Promise.all([Shortcut.create(macos.shortcts)])
+Promise.all([Shortcut.create(macos.shortcuts)])
 
 .then(function() {
   // return Shortcut.create(macos.shortcts);

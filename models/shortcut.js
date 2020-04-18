@@ -12,7 +12,7 @@ const shortcutSchema = new Schema({
     },
     description: {
         type: String,
-        required: true,
+        // required: true,
     },
     combo: {
         type: String,
