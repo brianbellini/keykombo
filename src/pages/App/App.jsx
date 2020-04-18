@@ -26,11 +26,12 @@ class App extends Component {
         super();
         this.state = {
           user: userService.getUser(),
-          myList:  [],
+          myList: [],
           showMyList: false,
           shortcuts: [],
           appList: ['Applications'],
           selectedShortcut: null,
+          appFilter: "Applications",
         };
     }
 
@@ -71,6 +72,10 @@ class App extends Component {
       });
       return appList.sort();
     };
+
+    handleFilter = (application) => {
+        this.setState({appFilter: application})
+    }
 
     //----------------CRUD OPERATIONS-----------------------
     handleDeleteShortcut = async id => {
@@ -143,7 +148,9 @@ class App extends Component {
     render() {
         return (
             <div className="App">
-                <AppFilter applications={this.state.appList}/>
+                <AppFilter
+                    applications={this.state.appList}
+                    handleFilter={this.handleFilter}/>
 
                 <MasterShortcuts
                     handleAllSelector={this.handleAllSelector}
@@ -155,7 +162,7 @@ class App extends Component {
                     handleDeleteShortcut={this.handleDeleteShortcut}
                     handleSelectShortcut={this.handleSelectShortcut}
                     handleAddToMyList={this.handleAddToMyList}
-                    appFilter={this.appFilter}/>
+                    appFilter={this.state.appFilter}/>
                   
                 <div>
                     <Nav user={this.state.user} handleLogout={this.handleLogout}/>

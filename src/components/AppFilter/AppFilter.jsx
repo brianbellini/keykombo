@@ -4,7 +4,7 @@ class AppFilter extends Component {
   
 
     handleChange = e => {
-        // const formData = {[e.target.name]: e.target.value};
+        this.props.handleFilter(e.target.value); 
     };
 
     render() {

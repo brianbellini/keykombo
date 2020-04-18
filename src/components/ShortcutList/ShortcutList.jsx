@@ -4,16 +4,20 @@ import ShortcutCell from '../../components/ShortcutCell/ShortcutCell';
 
 function filterListBy(list, filter) {
   let result = []
+  if (filter === "Applications") {
+    return list;
+  } else {
     list.forEach((item) => {
       if (item.application === filter) {
         result.push(item)
       }
     })
+  }
   return result;
 }
 
 function ShortcutListPage(props) {
-  const filteredShortcutList = filterListBy(props.shortcuts, props.filterMe)
+  const filteredShortcutList = filterListBy(props.shortcuts, props.appFilter)
   return (
     <>
       <h1>Shortcut List</h1>
