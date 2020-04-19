@@ -30,7 +30,7 @@ class ShortcutAdd extends Component {
   render(){
     return (
       <>
-        <h1>Add Shortcut</h1>
+        <h2>Add Shortcut</h2>
         <form ref={this.formRef} autoComplete="off" onSubmit={this.handleSubmit}>
           <div>
           <div>

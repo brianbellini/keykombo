@@ -7,7 +7,7 @@ import Nav from '../../components/Nav/Nav'
 import SignupCard from '../../components/Signup/Signup';
 import LoginCard from '../../components/LoginCard/LoginCard';
 import ShortcutList from '../../components/ShortcutList/ShortcutList';
-import MasterShortcuts from '../../components/MasterShortcuts/MasterShortcuts';
+import ChooseList from '../../components/ChooseList/ChooseList';
 import AppFilter from '../../components/AppFilter/AppFilter';
 import ShortcutAdd from '../../components/ShortcutAdd/ShortcutAdd';
 import ShortcutEdit from '../../components/ShortcutEdit/ShortcutEdit';
@@ -28,6 +28,7 @@ class App extends Component {
           appList: ['Applications'],
           selectedShortcut: null,
           appFilter: "Show All",
+          editing: false,
         };
     }
 
@@ -98,7 +99,8 @@ class App extends Component {
       const user = userService.getUser()
       this.setState({
         user: user,
-        myList: user.myList
+        myList: user.myList,
+        editing: false,
       })
     }
 
@@ -121,7 +123,8 @@ class App extends Component {
       this.resetSelectShortcut()
 
       this.setState({
-        selectedShortcut
+        selectedShortcut,
+        editing: true,
       })
     }
 
@@ -146,10 +149,10 @@ class App extends Component {
     //----------------------RENDER-----------------------------
     render() {
         return (
+          <div className="whole-page">
             <div className="app-grid">
               <div className="title-bar">
               <h1>KeyKombo</h1>
-              <h4>Brought to you by 1/3 of The Best Group</h4>
               </div>
               <div className="controls">
                 <AppFilter
@@ -157,9 +160,10 @@ class App extends Component {
                     appFilter={this.state.AppFilter}
                     handleFilter={this.handleFilter}/>
 
-                <MasterShortcuts
+                <ChooseList
                     handleAllSelector={this.handleAllSelector}
-                    handleMySelector={this.handleMySelector}/>
+                    handleMySelector={this.handleMySelector}
+                    user={(this.user ? true : false)}/>
               </div>
               <div className="left">
                 <ShortcutList
@@ -171,31 +175,36 @@ class App extends Component {
                     appFilter={this.state.appFilter}/>
                 </div>
 
-                <div className="login-card top-right">
+                <div className="right">
                     <Nav user={this.state.user} handleLogout={this.handleLogout}/>
+
+                  {(!this.state.showMyList && this.state.user) ? 
+                  <div>
+                  <hr></hr>
+                  <h2>Click Add to save a shortcut to your customized list.</h2>
+                  <hr></hr>
+                  <h2>Select My Shorcuts to view your saved list.</h2>
+                  <hr></hr>
+                  <h2>You can also add custom shortcuts to your private list.</h2>
+                  </div> : ""}
 
                     {(!this.state.user) ?
                     <LoginCard
                         handleSignupOrLogin={this.handleSignupOrLogin} /> : ""}
 
-                </div>
-              <div className="bottom-right">
                 {(!this.state.user) ?
                 <SignupCard
                     handleSignupOrLogin={this.handleSignupOrLogin} /> : ""}
-              </div>
-              <div className="top-right">
-                {(this.state.user && this.state.showMyList) ?
+                {(this.state.user && this.state.showMyList && !this.state.editing) ?
                 <ShortcutAdd handleAddShortcut={this.handleAddShortcut} userID={this.state.user._id}/> : ""}
-              </div>
-              <div className="bottom-right">
-                {(this.state.showMyList && this.state.selectedShortcut) ?
+                {(this.state.showMyList && this.state.selectedShortcut && this.state.editing) ?
                 <ShortcutEdit
                     selectedShortcut={this.state.selectedShortcut}
                     handleUpdateShortcut={this.handleUpdateShortcut}
                     handleDeleteShortcut={this.handleDeleteShortcut}
                     getSelectedShortcut={this.getSelectedShortcut}/> : ""}
               </div>
+            </div>
             </div>
         );
     }

@@ -9,7 +9,7 @@ class AppFilter extends Component {
 
     render() {
         return (
-                <div>
+                <div className="select-control">
                 <select name="application" value='Applications' onChange={this.handleChange}>
                     {this.props.applications.map((application, idx) => <option key={idx} value={application}>{application}</option>)}
                 </select>

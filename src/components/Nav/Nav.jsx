@@ -5,9 +5,11 @@ import './Nav.css';
 const Nav = (props) => {
     let navState = props.user ?
         <div>
-            <Link to='' onClick={props.handleLogout}>LOG OUT</Link>
-            &nbsp;&nbsp;|&nbsp;&nbsp;
             <span>WELCOME, {props.user.name}</span>
+            <br />
+            <br />
+            <Link className="NavBar-link" to='' onClick={props.handleLogout}>LOG OUT</Link>
+            <br />
         </div>
         :
         "";

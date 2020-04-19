@@ -41,7 +41,7 @@ class ShortcutEdit extends Component {
     console.log(this.props)
     return (
       <>
-        <h1>Edit Shortcut</h1>
+        <h2>Edit Shortcut</h2>
         <form ref={this.formRef} autoComplete="off" onSubmit={this.handleSubmit}>
         <div>
           <div>
@@ -83,18 +83,19 @@ class ShortcutEdit extends Component {
               onChange={this.handleChange}
               required/>
           </div>
+          <div>
           <button
             type="submit"
             className="btn"
-            disabled={this.state.invalidForm}
-          >
-            SAVE CHANGES
-          </button>&nbsp;&nbsp;
-        </form>
-        <button
-          onClick={() => this.props.handleDeleteShortcut(this.props.selectedShortcut._id)}>
-          X
-        </button>
+            disabled={this.state.invalidForm}>
+            SAVE
+          </button>
+          <button
+            onClick={() => this.props.handleDeleteShortcut(this.props.selectedShortcut._id)}>
+            DELETE
+          </button>
+          </div>
+          </form>
       </>
     );
   }

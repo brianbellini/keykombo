@@ -30,21 +30,21 @@ class LoginCard extends Component {
   render() {
     return (
       <div className="LoginCard">
-        <header className="header-footer">Log In</header>
-        <form className="form-horizontal" onSubmit={this.handleSubmit} >
-          <div className="form-group">
-            <div className="col-sm-12">
-              <input type="email" className="form-control" placeholder="Email" value={this.state.email} name="email" onChange={this.handleChange} />
+        <h2>Log In</h2>
+        <form onSubmit={this.handleSubmit} >
+          <div>
+            <div>
+              <input type="email" placeholder="Email" value={this.state.email} name="email" onChange={this.handleChange} />
             </div>
           </div>
-          <div className="form-group">
-            <div className="col-sm-12">
-              <input type="password" className="form-control" placeholder="Password" value={this.state.password} name="password" onChange={this.handleChange} />
+          <div>
+            <div>
+              <input type="password" placeholder="Password" value={this.state.password} name="password" onChange={this.handleChange} />
             </div>
           </div>
-          <div className="form-group">
-            <div className="col-sm-12 text-center">
-              <button className="btn btn-default">Log In</button>
+          <div>
+            <div>
+              <button className="login-button">Log In</button>
             </div>
           </div>
         </form>

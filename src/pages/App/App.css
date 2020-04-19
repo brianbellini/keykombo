@@ -1,49 +1,80 @@
+body {
+    margin: 0;
+    background-color: lightgreen;
+
+}
+
 .app-grid {
     display: grid;
-    grid-template-columns: 70% 100px;
-    grid-template-rows: 100px 100px 100px 100px 100px;
+    grid-template-columns: 10px 70% 30%;
+    grid-template-rows: 150px 30px 100px;
     column-gap: 20px;
     row-gap: 20px;
-    grid-template-areas:
-    "title-bar"
-    "control-bar control-bar"
-    "left-panel top-right"
-    "left-panel bottom-right";
-
-    border: 1px solid #fff;
-    background-color: darkgray;
+    color: purple;
 }
 .title-bar {
-    grid-column-start: 1;
+    grid-column-start: 2;
     grid-row-start: 1;
+    
 }
-.controls {
-    grid-area: control-bar;
-    background-color: darkred;
+
+h1 {
+    font-family: 'Righteous', cursive;
+    font-size: 100px;
 }
+
+
 .left {
-    grid-column-start: 1;
-    grid-row-start: 3;
-}
-.top-right {
     grid-column-start: 2;
     grid-row-start: 3;
 }
-.bottom-right {
-    grid-column-start: 2;
-    grid-row-start: 4;
+.right {
+    grid-column-start: 3;
+    grid-row-start: 3;
+    width: 200px;
 }
+
 .controls {
-    grid-column-start: 1;
+    grid-column-start: 2;
     grid-row-start: 2;
-    background-color: maroon;
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
 }
 
-
-
-
-
-button {
+button, select {
     background-color: purple;
     color: white;
+    border: 2px solid rgb(49, 48, 48);
+    margin: 10px;
+    font-size: large;
+}
+select {
+    width: 125px;
+}
+
+input {
+    background-color: rgb(49, 48, 48);
+    color: lightgreen;
+    font-size: large;
+  }
+
+h2 {
+    text-align: center;
+    color: purple;
+}
+
+hr {
+    border: 0;
+    height: 2px;
+    background-image: linear-gradient(to right, lightgreen, purple, lightgreen);
+}
+
+::placeholder {
+    color: lightgreen;
+}
+
+.login-button, .signup-button, .logout-button{
+    display: inline;
+    margin: 0 auto;
 }

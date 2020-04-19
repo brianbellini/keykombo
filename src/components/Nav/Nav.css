@@ -5,5 +5,9 @@
   }
   
   .NavBar-link {
-    margin: 0 10px;
+    background-color: purple;
+    color: white;
+    text-decoration: none;
+    padding: 4px;
+    align-self: center;
   }
