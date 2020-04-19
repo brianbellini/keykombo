@@ -15,7 +15,6 @@ const myListSchema = new Schema({
     },
     description: {
         type: String,
-        required: true,
     },
     combo: {
         type: String,

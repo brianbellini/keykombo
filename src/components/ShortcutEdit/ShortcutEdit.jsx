@@ -60,14 +60,6 @@ class ShortcutEdit extends Component {
               required/>
           </div>
           <div>
-            <label>Description</label>
-            <input
-              name="description"
-              value={this.state.formData.description}
-              onChange={this.handleChange}
-              required/>
-          </div>
-          <div>
             <label>Keys</label>
             <input
               name="combo"

@@ -8,7 +8,7 @@ const Nav = (props) => {
             <span>WELCOME, {props.user.name}</span>
             <br />
             <br />
-            <Link className="NavBar-link" to='' onClick={props.handleLogout}>LOG OUT</Link>
+            <Link className="logout-button" to='' onClick={props.handleLogout}>LOG OUT</Link>
             <br />
         </div>
         :
