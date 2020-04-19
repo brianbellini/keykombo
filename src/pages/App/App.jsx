@@ -19,14 +19,12 @@ import userService from '../../utils/userService';
 import shortcutService from '../../utils/shortcutService';
 import myShortcutService from '../../utils/myShortcutService';
 
-// userService.getUser().myList || 
-
 class App extends Component {
     constructor() {
         super();
         this.state = {
           user: userService.getUser(),
-          myList: [],
+          myList: userService.getUser() ? userService.getUser().myList : [],
           showMyList: false,
           shortcuts: [],
           appList: ['Applications'],
@@ -97,13 +95,13 @@ class App extends Component {
       myList: user.myList}))
   }
 
-    handleUpdateShortcut = async changes => { ///\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+    handleUpdateShortcut = async changes => { 
       await myShortcutService.update(changes);
-      // const user = userService.getUser()
-      
-      // this.setState(state => ({
-      //   user: user,
-      //   myList: user.myList}))
+      const user = userService.getUser()
+      this.setState({
+        user: user,
+        myList: user.myList
+      })
     }
 
     handleAddToMyList = async shortcut => {
