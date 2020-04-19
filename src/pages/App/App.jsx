@@ -97,7 +97,7 @@ class App extends Component {
       myList: user.myList}))
   }
 
-    handleUpdateShortcut = async changes => { //------------------------------
+    handleUpdateShortcut = async changes => { ///\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
       await myShortcutService.update(changes);
       // const user = userService.getUser()
       
@@ -150,7 +150,8 @@ class App extends Component {
     //----------------------RENDER-----------------------------
     render() {
         return (
-            <div className="App">
+            <div className="app-grid">
+              <div className="controls">
                 <AppFilter
                     applications={this.state.appList}
                     appFilter={this.state.AppFilter}
@@ -159,7 +160,8 @@ class App extends Component {
                 <MasterShortcuts
                     handleAllSelector={this.handleAllSelector}
                     handleMySelector={this.handleMySelector}/>
-
+              </div>
+              <div className="left">
                 <ShortcutList
                     shortcuts={this.state.showMyList ? this.state.myList : this.state.shortcuts}
                     showEdit={this.state.showMyList ? true : false}
@@ -167,8 +169,9 @@ class App extends Component {
                     handleSelectShortcut={this.handleSelectShortcut}
                     handleAddToMyList={this.handleAddToMyList}
                     appFilter={this.state.appFilter}/>
-                  
-                <div>
+                </div>
+
+                <div className="login-card top-right">
                     <Nav user={this.state.user} handleLogout={this.handleLogout}/>
 
                     {(!this.state.user) ?
@@ -176,21 +179,23 @@ class App extends Component {
                         handleSignupOrLogin={this.handleSignupOrLogin} /> : ""}
 
                 </div>
-
+              <div className="bottom-right">
                 {(!this.state.user) ?
                 <SignupCard
                     handleSignupOrLogin={this.handleSignupOrLogin} /> : ""}
-
+              </div>
+              <div className="top-right">
                 {(this.state.user && this.state.showMyList) ?
                 <ShortcutAddPage handleAddShortcut={this.handleAddShortcut} userID={this.state.user._id}/> : ""}
-
+              </div>
+              <div className="bottom-right">
                 {(this.state.showMyList && this.state.selectedShortcut) ?
                 <ShortcutEditPage
                     selectedShortcut={this.state.selectedShortcut}
                     handleUpdateShortcut={this.handleUpdateShortcut}
                     handleDeleteShortcut={this.handleDeleteShortcut}
                     getSelectedShortcut={this.getSelectedShortcut}/> : ""}
-              
+              </div>
             </div>
         );
     }
