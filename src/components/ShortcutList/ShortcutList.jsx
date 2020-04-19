@@ -16,15 +16,21 @@ function filterListBy(list, filter) {
   return result;
 }
 
+
+
 function ShortcutListPage(props) {
   const filteredShortcutList = filterListBy(props.shortcuts, props.appFilter)
   return (
     <>
-      <h1>Shortcut List</h1>
       <div className='ShortcutListPage-grid'>
             <table>
+              <thead>
+                <tr><th className="cell1">App</th><th className="cell2">Shortcut</th><th className="cell3">Description</th><th className="cell4">Category</th><th className="cell5"></th></tr>
+              </thead>
+
                 <tbody>
                     {filteredShortcutList.map(shortcut =>
+                      
                         <ShortcutCell
                             key={shortcut._id}
                             shortcut={shortcut}
@@ -32,6 +38,7 @@ function ShortcutListPage(props) {
                             showEdit={props.showEdit}
                             handleAddToMyList={props.handleAddToMyList}
                             handleSelectShortcut={props.handleSelectShortcut}
+                            
                         />
                     )}
                 </tbody>

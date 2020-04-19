@@ -1,49 +1,38 @@
 import React, {Component} from 'react';
 
-class ShortcutEditPage extends Component {
-  
+class ShortcutAdd extends Component {
   state = {
-    invalidForm: false,
-    formData: {...this.props.getSelectedShortcut()},
+    invalidForm: true,
+    formData: {
+      application: '',
+      func: '',
+      description: '',
+      combo: '',
+      menu: '',
+    }
   };
 
   formRef = React.createRef();
 
-  handleSubmit = e => {
-    e.preventDefault();
-    this.props.handleUpdateShortcut(this.state.formData);
-  };
-
-  componentWillReceiveProps(nextProps) {
-    // You don't have to do this check first, but it can help prevent an unneeded render
-    if (nextProps.selectedShortcut !== this.state.formData) {
-      this.setState({ formData: nextProps.selectedShortcut });
-    }
-  }
-
   handleChange = e => {
+    const formData = {...this.state.formData, [e.target.name]: e.target.value};
     this.setState({
-      formData: {
-        ...this.state.formData,
-        [e.target.name]: e.target.value
-      },
+      formData,
       invalidForm: !this.formRef.current.checkValidity()
     });
   };
 
-  componentDidMount() {
-    this.setState({
-      formData: {...this.props.selectedShortcut}
-    })
-  }
+  handleSubmit = e => {
+    e.preventDefault();
+    this.props.handleAddShortcut(this.state.formData);
+  };
 
-  render() {
-    console.log(this.props)
+  render(){
     return (
       <>
-        <h1>Edit Shortcut</h1>
+        <h1>Add Shortcut</h1>
         <form ref={this.formRef} autoComplete="off" onSubmit={this.handleSubmit}>
-        <div>
+          <div>
           <div>
             <label>Application</label>
             <input
@@ -86,18 +75,15 @@ class ShortcutEditPage extends Component {
           <button
             type="submit"
             className="btn"
-            disabled={this.state.invalidForm}
-          >
-            SAVE CHANGES
-          </button>&nbsp;&nbsp;
+            disabled={this.state.invalidForm}>
+            ADD SHORTCUT
+          </button>
         </form>
-        <button
-          onClick={() => this.props.handleDeleteShortcut(this.props.selectedShortcut._id)}>
-          X
-        </button>
+        <h4>{}</h4>
       </>
     );
   }
+
 }
 
-export default ShortcutEditPage;
+export default ShortcutAdd;

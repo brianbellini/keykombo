@@ -1,7 +1,54 @@
 .ShortcutListPage-grid {
-    width: 80%;
+    /* width: 80%; */
     display: table;
-    border: solid 1px yellow;
+    border: solid 1px purple;
     background-color: rgb(49, 48, 48);
     color: white;
+}
+table {
+    width: 100%;
+}
+tbody {
+    display: block;
+    overflow: auto;
+    height: 300px;
+    width: 100%;
+    color: lightgreen;
+}
+th { 
+    width:150px; 
+    text-align:center; 
+    padding:5px;
+  
+} 
+td { 
+    width:150px; 
+    text-align:center;
+    padding:5px;
+}
+
+tr {
+    border-bottom: solid 1px purple;
+}
+
+thead tr {
+    display: block;
+}
+.cell1 {
+    width: 150px;
+}
+.cell2 {
+    width: 200px;
+}
+.cell3 {
+    width: 300px;
+}
+.cell4 {
+    width: 100px;
+}
+.cell5 {
+    width: 10px;
+}
+.shade {
+    background-color: lightgrey;
 }

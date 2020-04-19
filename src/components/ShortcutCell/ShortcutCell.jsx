@@ -1,17 +1,30 @@
 import React from 'react';
 import './ShortcutCell.css'
+import { PromiseProvider } from 'mongoose';
+
+let shade = true;
+function alternate(shade) {
+  return shade ? (shade = false) : (shade = true);
+}
 
 function ShortcutCell({shortcut, handleAddToMyList, showEdit, handleSelectShortcut}) {
-    // onClick={() => handleSelectShortcut(shortcut._id)}
-    return (
-            <tr onClick={() => (showEdit ? handleSelectShortcut(shortcut) : handleAddToMyList(shortcut))} className='shortcut-list-item'>
+        alternate(shade);
+
+        return (
+            <tr
+                onClick={() => (showEdit ? handleSelectShortcut(shortcut) : handleAddToMyList(shortcut))}
+                className='shortcut-list-item'
+                className={shade}>
                 
-                    <td>{shortcut.application}</td>
-                    <td>{shortcut.combo}</td>
-                    <td>{shortcut.menu}</td>
-                    <td>{shortcut.description}</td>
-                    <td>{shortcut.func}</td>
-                    
+                    <td className="cell1">{shortcut.application}</td>
+                    <td className="cell2">{shortcut.combo}</td>
+                    <td className="cell3">{shortcut.func}</td>
+                    <td className="cell4">{shortcut.menu}</td>
+                    <td className="cell5">
+                            <button onClick={() => (showEdit ? handleSelectShortcut(shortcut) : handleAddToMyList(shortcut))}>
+                                    {showEdit ? "Edit" : "Add"}
+                            </button>
+                    </td>
                
             </tr>
     )

@@ -1,9 +1,49 @@
-.app {
-    height: 100vh;
-    width: 100%;
+.app-grid {
     display: grid;
-    grid-template-columns:  0.1fr 5fr 0.1fr;
-    grid-template-rows: 4;
-    align-items: center;
-    justify-items: center;
+    grid-template-columns: 70% 100px;
+    grid-template-rows: 100px 100px 100px 100px 100px;
+    column-gap: 20px;
+    row-gap: 20px;
+    grid-template-areas:
+    "title-bar"
+    "control-bar control-bar"
+    "left-panel top-right"
+    "left-panel bottom-right";
+
+    border: 1px solid #fff;
+    background-color: darkgray;
+}
+.title-bar {
+    grid-column-start: 1;
+    grid-row-start: 1;
+}
+.controls {
+    grid-area: control-bar;
+    background-color: darkred;
+}
+.left {
+    grid-column-start: 1;
+    grid-row-start: 3;
+}
+.top-right {
+    grid-column-start: 2;
+    grid-row-start: 3;
+}
+.bottom-right {
+    grid-column-start: 2;
+    grid-row-start: 4;
+}
+.controls {
+    grid-column-start: 1;
+    grid-row-start: 2;
+    background-color: maroon;
+}
+
+
+
+
+
+button {
+    background-color: purple;
+    color: white;
 }

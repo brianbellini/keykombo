@@ -9,10 +9,8 @@ import LoginCard from '../../components/LoginCard/LoginCard';
 import ShortcutList from '../../components/ShortcutList/ShortcutList';
 import MasterShortcuts from '../../components/MasterShortcuts/MasterShortcuts';
 import AppFilter from '../../components/AppFilter/AppFilter';
-
-/* ------------------PAGES------------------ */
-import ShortcutAddPage from '../ShortcutAddPage/ShortcutAddPage';
-import ShortcutEditPage from '../ShortcutEditPage/ShortcutEditPage';
+import ShortcutAdd from '../../components/ShortcutAdd/ShortcutAdd';
+import ShortcutEdit from '../../components/ShortcutEdit/ShortcutEdit';
 
 /* ------------------SERVICES------------------ */
 import userService from '../../utils/userService';
@@ -149,6 +147,10 @@ class App extends Component {
     render() {
         return (
             <div className="app-grid">
+              <div className="title-bar">
+              <h1>KeyKombo</h1>
+              <h4>Brought to you by 1/3 of The Best Group</h4>
+              </div>
               <div className="controls">
                 <AppFilter
                     applications={this.state.appList}
@@ -184,11 +186,11 @@ class App extends Component {
               </div>
               <div className="top-right">
                 {(this.state.user && this.state.showMyList) ?
-                <ShortcutAddPage handleAddShortcut={this.handleAddShortcut} userID={this.state.user._id}/> : ""}
+                <ShortcutAdd handleAddShortcut={this.handleAddShortcut} userID={this.state.user._id}/> : ""}
               </div>
               <div className="bottom-right">
                 {(this.state.showMyList && this.state.selectedShortcut) ?
-                <ShortcutEditPage
+                <ShortcutEdit
                     selectedShortcut={this.state.selectedShortcut}
                     handleUpdateShortcut={this.handleUpdateShortcut}
                     handleDeleteShortcut={this.handleDeleteShortcut}
