@@ -13,10 +13,10 @@ const deleteAll = Shortcut.deleteMany({});
 
 Promise.all([deleteAll])
 .then(function() {
-  return Shortcut.create(macos.shortcts);
+  return Shortcut.create(macos.shortcuts);
 })
 .then(function() {
-  return Shortcut.create(vscode.shortcts);
+  return Shortcut.create(vscode.shortcuts);
 })
 .then(function() {
   process.exit();

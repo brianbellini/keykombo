@@ -5,7 +5,6 @@ const BASE_URL = '/api/myshortcuts';
 
 
 function deleteOne(id) {
-  console.log("THIS IS ID", id)
   return fetch(`${BASE_URL}/${id}`, {
       method: 'DELETE',
       headers: {
@@ -31,7 +30,6 @@ function create(shortcut) {
 }
 
 export function update(shortcut) {  //------------------------------
-  console.log("THIS IS THE SHORTCUT: ", shortcut)
   return fetch(`${BASE_URL}/${shortcut._id}`, {
       method: 'PUT',
       headers: {

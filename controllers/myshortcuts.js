@@ -10,7 +10,6 @@ module.exports = {
 
 async function create(req, res) {
     try{
-        console.log("CREATE: ", req.body)
         const user = await User.findById(req.user._id);
         user.myList.push(req.body)
         user.save();
@@ -40,7 +39,6 @@ async function deleteOne(req, res) {
         await User.update({_id:req.user._id}, {$pull:{myList:{_id:req.params.id}}})
         const user = await User.findById(req.user._id)
         const token =  createJWT(user)
-        console.log("CONTROLLER USER: ", user)
         res.status(200).json({token});
     }
     catch(err){

@@ -104,7 +104,6 @@ class App extends Component {
     }
 
     handleAddToMyList = async shortcut => {
-      console.log("ADD THIS ID: ", shortcut)
       delete shortcut._id
       await myShortcutService.create(shortcut)
       const user = userService.getUser()
