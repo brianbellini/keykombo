@@ -38,7 +38,6 @@ class ShortcutEdit extends Component {
   }
 
   render() {
-    console.log(this.props)
     return (
       <>
         <h2>Edit Shortcut</h2>

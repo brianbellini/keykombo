@@ -15,7 +15,7 @@ module.exports = function(req, res, next) {
         // It's a valid token, so add user to req
         req.user = decoded.user;    
         next();
-      }
+      };
     });
   } else {
     next('No token sent');

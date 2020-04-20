@@ -2,7 +2,7 @@ const app = "Visual Studio Code";
 const menu = ["General", "Edit", "Selection", "Search", "Rich Lang.", "Navigation", "Editor", "File", "Display", "Terminal"];
 
 module.exports.shortcuts = [
-    {       //----------------------------------------------General
+    {                       //----------------------------------------------General
     "application":  app,
     "func":         "Show Command Palette",
     "combo":        "Shift Command P then F1",
@@ -38,7 +38,7 @@ module.exports.shortcuts = [
     "combo":        "Command K then Command S",
     "menu":         menu[0]
     }, 
-    {    //----------------------------------------------Edit
+    {                       //----------------------------------------------Edit
     "application":  app,
     "func":         "Cut line (empty selection)",
     "combo":        "Command X",
@@ -157,7 +157,7 @@ module.exports.shortcuts = [
     "func":         "Toggle word wrap",
     "combo":        "Option Z",
     "menu":         menu[1]
-    },  //----------------------------------------------Selection
+    },                       //----------------------------------------------Selection
     {   
     "application":  app,
     "func":         "Insert cursor",
@@ -241,7 +241,7 @@ module.exports.shortcuts = [
     "func":         "Column (box) selection page down",
     "combo":        "Shift Option Command PageDown",
     "menu":         menu[2]
-    }, //------------------------------------------------Search
+    },                       //----------------------------------------------Search
     {   
     "application":  app,
     "func":         "Find",
@@ -277,7 +277,7 @@ module.exports.shortcuts = [
     "func":         "Move last selection to next Find match",
     "combo":        "Command K Command D",
     "menu":         menu[3]
-    },  //-------------------------------------Rich Language
+    },                       //----------------------------------------------Rich Language
     {   
     "application":  app,
     "func":         "Trigger suggestion",
@@ -349,7 +349,7 @@ module.exports.shortcuts = [
     "func":         "Change file language",
     "combo":        "Command K M",
     "menu":         menu[4]
-    },  //---------------------------------------------Navigation
+    },                       //----------------------------------------------Navigation
     {   
     "application":  app,
     "func":         "Show all Symbols",
@@ -403,7 +403,7 @@ module.exports.shortcuts = [
     "func":         "Toggle Tab moves focus",
     "combo":        "Control Command M",
     "menu":         menu[5]
-    },  //-----------------------------------------------Editor
+    },                       //----------------------------------------------Editor
     {   
     "application":  app,
     "func":         "Close editor",
@@ -445,7 +445,7 @@ module.exports.shortcuts = [
     "func":         "Move active editor group",
     "combo":        "Command K ← / Command K →",
     "menu":         menu[6]
-    },  //--------------------------------------------File
+    },                       //----------------------------------------------File
     {   
     "application":  app,
     "func":         "New File",
@@ -523,7 +523,7 @@ module.exports.shortcuts = [
     "func":         "Show active file in new window/instance",
     "combo":        "Command K O",
     "menu":         menu[6]
-    },  //---------------------------------------------Display
+    },                       //----------------------------------------------Display
     {   
     "application":  app,
     "func":         "Toggle full screen",
@@ -613,7 +613,7 @@ module.exports.shortcuts = [
     "func":         "Zen Mode(Esc Esc to exit)",
     "combo":        "Command K Z",
     "menu":         menu[7]
-    },  //--------------------------------------Debug
+    },                       //----------------------------------------------Debug
     {   
     "application":  app,
     "func":         "Toggle breakpoint",
@@ -649,7 +649,7 @@ module.exports.shortcuts = [
     "func":         "Show hover",
     "combo":        "Command K then Command I",
     "menu":         menu[8]
-    },  //--------------------------------------------Terminal
+    },                       //----------------------------------------------Terminal
     {   
     "application":  app,
     "func":         "Show integrated terminal",

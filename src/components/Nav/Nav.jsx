@@ -10,9 +10,7 @@ const Nav = (props) => {
             <br />
             <Link className="logout-button" to='' onClick={props.handleLogout}>LOG OUT</Link>
             <br />
-        </div>
-        :
-        "";
+        </div> : "";
 
     return (
         <div>

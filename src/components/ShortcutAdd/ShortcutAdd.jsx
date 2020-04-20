@@ -83,7 +83,6 @@ class ShortcutAdd extends Component {
       </>
     );
   }
-
 }
 
 export default ShortcutAdd;

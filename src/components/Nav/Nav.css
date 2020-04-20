@@ -2,12 +2,12 @@
     display: flex;
     justify-content: center;
     margin: 0 0 20px;
-  }
+}
   
-  .logout-button {
+.logout-button {
     background-color: purple;
     color: white;
     text-decoration: none;
     padding: 4px;
     align-self: center;
-  }
+}

@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
 
 class AppFilter extends Component {
-  
-
     handleChange = e => {
         this.props.handleFilter(e.target.value); 
     };
