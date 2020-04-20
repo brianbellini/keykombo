@@ -2,13 +2,11 @@ const User = require('../models/user');
 const jwt = require('jsonwebtoken');
 const SECRET = process.env.SECRET
 
-
 module.exports = {
     create,
     update: updateShortcut,
     delete: deleteOne,
 }
-
 
 async function create(req, res) {
     try{
@@ -17,7 +15,6 @@ async function create(req, res) {
         user.myList.push(req.body)
         user.save();
         const token =  createJWT(user)
-
         res.status(200).json({token});
     }
     catch(err){

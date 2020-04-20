@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
-// import {Route} from 'react-router-dom';
 import './App.css';
 
-/* ----------------COMPONENTS------------------ */
+//----------------COMPONENTS------------------
 import Nav from '../../components/Nav/Nav'
 import SignupCard from '../../components/Signup/Signup';
 import LoginCard from '../../components/LoginCard/LoginCard';
@@ -12,7 +11,7 @@ import AppFilter from '../../components/AppFilter/AppFilter';
 import ShortcutAdd from '../../components/ShortcutAdd/ShortcutAdd';
 import ShortcutEdit from '../../components/ShortcutEdit/ShortcutEdit';
 
-/* ------------------SERVICES------------------ */
+//------------------SERVICES------------------
 import userService from '../../utils/userService';
 import shortcutService from '../../utils/shortcutService';
 import myShortcutService from '../../utils/myShortcutService';
@@ -32,7 +31,7 @@ class App extends Component {
         };
     }
 
-    //---------------------USER IN/OUT-----------------------------
+//---------------------USER IN/OUT-----------------------------
     handleSignupOrLogin = () => {
         this.setState({user: userService.getUser(),
                       myList: userService.getUser().myList,
@@ -47,7 +46,7 @@ class App extends Component {
                     appList: ['Applications']});
     }
 
-    //----------------------STATE CHANGING---------------------------
+//----------------------STATE CHANGING---------------------------
     handleMySelector = () => {
       if (this.state.user) {
         this.setState({showMyList: true,
@@ -77,7 +76,7 @@ class App extends Component {
         this.setState({appFilter: application})
     }
 
-    //----------------CRUD OPERATIONS-----------------------
+//----------------CRUD OPERATIONS-----------------------
     handleDeleteShortcut = async id => {
       await myShortcutService.deleteOne(id);
       const user = userService.getUser()
@@ -114,7 +113,7 @@ class App extends Component {
         myList: user.myList}))
     }
 
-    //-----------------SHORTCUT SELECTION--------------------------
+//-----------------SHORTCUT SELECTION--------------------------
     getSelectedShortcut = () => {
       return this.state.selectedShortcut
     }
@@ -135,7 +134,7 @@ class App extends Component {
     }
 
 
-    //----------------------COMPONENT---------------------------
+//----------------------COMPONENT---------------------------
     async componentDidMount() {
         const shortcuts = await shortcutService.getAll();
 
@@ -146,7 +145,7 @@ class App extends Component {
         });
       }
 
-    //----------------------RENDER-----------------------------
+//----------------------RENDER-----------------------------
     render() {
         return (
           <div className="whole-page">
@@ -180,7 +179,6 @@ class App extends Component {
 
                   {(!this.state.showMyList && this.state.user) ? 
                   <div>
-                  <hr></hr>
                   <h2>Click Add to save a shortcut to your customized list.</h2>
                   <hr></hr>
                   <h2>Select My Shorcuts to view your saved list.</h2>

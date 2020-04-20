@@ -8,4 +8,3 @@ export default function ChooseList(props) {
         </div>
     )
 }
-
