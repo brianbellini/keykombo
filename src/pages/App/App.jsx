@@ -170,7 +170,8 @@ class App extends Component {
                     handleDeleteShortcut={this.handleDeleteShortcut}
                     handleSelectShortcut={this.handleSelectShortcut}
                     handleAddToMyList={this.handleAddToMyList}
-                    appFilter={this.state.appFilter}/>
+                    appFilter={this.state.appFilter}
+                    user={this.state.user}/>
                 </div>
 
                 <div className="right">
